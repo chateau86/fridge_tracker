@@ -11,7 +11,7 @@ module.exports = (app) => {
 
   app.get('/food/add_static_test', function (req, res, next) {
     console.log("add_static_test");
-    const food = new FoodItem({
+    let food = FoodItem({
             name: 'green apple', 
             quantity: 3,
             unit: 'apples',
@@ -19,7 +19,7 @@ module.exports = (app) => {
             date_added:  Date(2018,07,30),
             date_warn:  Date(2018,07,30),
             date_expire:  Date(2018,07,31)
-            }); //TODO: Param
+            });
 
     food.save()
       .then(() => res.json(food))
