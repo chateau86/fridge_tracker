@@ -22,8 +22,8 @@ module.exports = (app) => {
                         quantity: 3,
                         unit: 'apples',
                         price_per_unit:1,
-                        date_warn:   new Date(2017,07,30),
-                        date_expire: new Date(2017,07,31)
+                        date_warn:   new Date("2017-07-30"),
+                        date_expire: new Date("2017-07-31")
                         });
 
         food.save()
