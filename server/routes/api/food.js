@@ -35,6 +35,7 @@ module.exports = (app) => {
         console.log("add");
         console.log(req.query)
         var name = req.query.hasOwnProperty('name')?req.query.name :'green apple';
+        var qty = (req.query.hasOwnProperty('qty')&&!isNaN(req.query.qty))?parseFloat(req.query.qty) :1;
         //TODO
         
         let food = FoodItem({
