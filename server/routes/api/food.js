@@ -16,13 +16,19 @@ module.exports = (app) => {
             quantity: 3,
             unit: 'apples',
             price_per_unit:1,
-            date_added:  Date(2018,07,30),
             date_warn:  Date(2018,07,30),
             date_expire:  Date(2018,07,31)
             });
 
     food.save()
       .then(() => res.json(food))
+      .catch((err) => next(err));
+  });
+  
+  app.get('/food/remove/:id', function (req, res, next) {
+    Counter.findOneAndRemove({ _id: req.params.id })
+      .exec()
+      .then((counter) => res.json())
       .catch((err) => next(err));
   });
 
