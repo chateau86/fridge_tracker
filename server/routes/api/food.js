@@ -40,7 +40,7 @@ module.exports = (app) => {
         
         let food = FoodItem({
                         name: name, 
-                        quantity: 3,
+                        quantity: qty,
                         unit: 'count',
                         price_per_unit:1,
                         date_warn:   new Date("2017-07-30"),
