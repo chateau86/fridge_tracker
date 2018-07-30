@@ -20,7 +20,7 @@ module.exports = (app) => {
         let food = FoodItem({
                         name: 'green apple', 
                         quantity: 3,
-                        unit: 'apples',
+                        unit: 'count',
                         price_per_unit:1,
                         date_warn:   new Date("2017-07-30"),
                         date_expire: new Date("2017-07-31")
@@ -34,17 +34,13 @@ module.exports = (app) => {
     app.post('/food/add', function (req, res, next) {
         console.log("add");
         console.log(req.query)
-        if(req.query.hasOwnProperty('name')){
-            var name = req.query.name;
-        } else {
-            var name = 'green apple';
-        }
+        var name = req.query.hasOwnProperty('name')?req.query.name :'green apple';
         //TODO
         
         let food = FoodItem({
                         name: name, 
                         quantity: 3,
-                        unit: 'apples',
+                        unit: 'count',
                         price_per_unit:1,
                         date_warn:   new Date("2017-07-30"),
                         date_expire: new Date("2017-07-31")
