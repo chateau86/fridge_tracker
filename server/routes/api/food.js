@@ -26,9 +26,9 @@ module.exports = (app) => {
   });
   
   app.get('/food/remove/:id', function (req, res, next) {
-    Counter.findOneAndRemove({ _id: req.params.id })
+    FoodItem.findOneAndRemove({ _id: req.params.id })
       .exec()
-      .then((counter) => res.json())
+      .then((food) => res.json())
       .catch((err) => next(err));
   });
 
