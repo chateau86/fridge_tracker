@@ -36,15 +36,19 @@ module.exports = (app) => {
         console.log(req.query)
         var name = req.query.hasOwnProperty('name')?req.query.name :'green apple';
         var qty = (req.query.hasOwnProperty('qty')&&!isNaN(req.query.qty))?parseFloat(req.query.qty) :1;
+        var unit = req.query.hasOwnProperty('unit')?req.query.unit :'count';
+        var ppu = (req.query.hasOwnProperty('ppu')&&!isNaN(req.query.ppu))?parseFloat(req.query.ppu) :1;
+        var warn = req.query.hasOwnProperty('warn')?new Date(req.query.warn):new Date("2017-07-30");
+        var exp =  req.query.hasOwnProperty('exp')?new Date(req.query.exp):new Date("2017-07-31");
         //TODO
         
         let food = FoodItem({
                         name: name, 
                         quantity: qty,
-                        unit: 'count',
-                        price_per_unit:1,
-                        date_warn:   new Date("2017-07-30"),
-                        date_expire: new Date("2017-07-31")
+                        unit: unit,
+                        price_per_unit: ppu,
+                        date_warn:   warn,
+                        date_expire: exp
                         });
 
         food.save()
