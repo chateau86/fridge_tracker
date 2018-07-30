@@ -16,7 +16,7 @@ module.exports = (app) => {
             unit: 'apples',
             price_per_unit:0.5,
             date_warn:  Date(2018,07,30),
-            date_expire:  Date(2018,07,31),
+            date_expire:  Date(2018,07,31)
             }); //TODO: Param
 
     food.save()
