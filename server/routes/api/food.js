@@ -31,6 +31,31 @@ module.exports = (app) => {
             .catch((err) => next(err));
     });
     
+    app.post('/food/add', function (req, res, next) {
+        console.log("add");
+        console.log(req.query)
+        if(req.query.hasOwnProperty('name')){
+            var name = req.query.name;
+        } else {
+            var name = 'green apple';
+        }
+        //TODO
+        
+        let food = FoodItem({
+                        name: name, 
+                        quantity: 3,
+                        unit: 'apples',
+                        price_per_unit:1,
+                        date_warn:   new Date("2017-07-30"),
+                        date_expire: new Date("2017-07-31")
+                        });
+
+        food.save()
+            .then(() => res.json(food))
+            .catch((err) => next(err));
+    });
+    
+    
     app.delete('/food/:id', function (req, res, next) {
         FoodItem.findOneAndRemove({ _id: req.params.id })
             .exec()
