@@ -9,6 +9,7 @@ module.exports = (app) => {
   });
 
   app.post('/food/add_static_test', function (req, res, next) {
+    console.log("add_static_test");
     const food = new FoodItem({
             name: 'green apple', 
             quantity:3,
