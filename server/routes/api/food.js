@@ -8,7 +8,7 @@ module.exports = (app) => {
       .catch((err) => next(err));
   });
 
-  app.post('/food/add_static_test', function (req, res, next) {
+  app.get('/food/add_static_test', function (req, res, next) {
     console.log("add_static_test");
     const food = new FoodItem({
             name: 'green apple', 
