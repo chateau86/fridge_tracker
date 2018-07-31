@@ -45,8 +45,20 @@ module.exports = (app) => {
             if(req.query.hasOwnProperty('name')){
                 itm.name = req.query.name;
             }
+            if(req.query.hasOwnProperty('unit')){
+                itm.unit = req.query.unit;
+            }
             if(req.query.hasOwnProperty('qty')&&!isNaN(req.query.qty)){
                 itm.quantity = parseFloat(req.query.qty);
+            }
+            if(req.query.hasOwnProperty('ppu')&&!isNaN(req.query.ppu)){
+                itm.price_per_unit = parseFloat(req.query.ppu);
+            }
+            if(req.query.hasOwnProperty('warn')){
+                itm.date_warn = new Date(req.query.warn);
+            }
+            if(req.query.hasOwnProperty('exp')){
+                itm.date_expire = new Date(req.query.exp);
             }
             itm.save()
             .then(() => res.json(itm))
