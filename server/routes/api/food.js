@@ -15,21 +15,6 @@ module.exports = (app) => {
             .then((food) => res.json(food))
             .catch((err) => next(err));
     });
-    app.post('/food/add_static_test', function (req, res, next) {
-        console.log("add_static_test");
-        let food = FoodItem({
-                        name: 'green apple', 
-                        quantity: 3,
-                        unit: 'count',
-                        price_per_unit:1,
-                        date_warn:   new Date("2017-07-30"),
-                        date_expire: new Date("2017-07-31")
-                        });
-
-        food.save()
-            .then(() => res.json(food))
-            .catch((err) => next(err));
-    });
     
     app.post('/food/add', function (req, res, next) {
         console.log("add");
@@ -40,7 +25,6 @@ module.exports = (app) => {
         var ppu = (req.query.hasOwnProperty('ppu')&&!isNaN(req.query.ppu))?parseFloat(req.query.ppu) :1;
         var warn = req.query.hasOwnProperty('warn')?new Date(req.query.warn):new Date("2017-07-30");
         var exp =  req.query.hasOwnProperty('exp')?new Date(req.query.exp):new Date("2017-07-31");
-        //TODO
         
         let food = FoodItem({
                         name: name, 
@@ -56,6 +40,19 @@ module.exports = (app) => {
             .catch((err) => next(err));
     });
     
+    app.post('/food/:id', function (req, res, next) {
+        FoodItem.findById(req.params.id, (err, itm)=>{
+            if(req.query.hasOwnProperty('name')){
+                itm.name = req.query.name;
+            }
+            if(req.query.hasOwnProperty('qty')&&!isNaN(req.query.qty)){
+                itm.quantity = parseFloat(req.query.qty);
+            }
+            itm.save()
+            .then(() => res.json(itm))
+            .catch((err) => next(err));
+        });
+    });
     
     app.delete('/food/:id', function (req, res, next) {
         FoodItem.findOneAndRemove({ _id: req.params.id })
