@@ -69,4 +69,4 @@ class Fridge extends Component {
   }
 }
 
-export default Home;
+export default Fridge;
