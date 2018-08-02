@@ -28,7 +28,10 @@ class Fridge extends Component {
   }
 
   newCounter() {
-
+    fetch(`/food/add`, { method: 'POST' })
+      .then(_ => {
+        this._modifyCounter(index, null);
+      });
   }
 
   incrementCounter(index) {
@@ -67,8 +70,6 @@ class Fridge extends Component {
           { this.state.foodItems.map((food, i) => (
             <li key={i}>
               <span>{food.name} </span>
-              <button onClick={() => this.incrementCounter(i)}>+</button>
-              <button onClick={() => this.decrementCounter(i)}>-</button>
               <button onClick={() => this.deleteItem(i)}>x</button>
             </li>
           )) }
