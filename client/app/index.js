@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 
 import App from './components/App/App';
+import Fridge from './components/Fridge/Fridge';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
