@@ -10,21 +10,13 @@ class Fridge extends Component {
     };
 
     this.newCounter = this.newCounter.bind(this);
-    this.incrementCounter = this.incrementCounter.bind(this);
-    this.decrementCounter = this.decrementCounter.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
 
     this._update = this._update.bind(this);
   }
 
   componentDidMount() {
-    fetch('/food')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          foodItems: json
-        });
-      });
+    this._update();
   }
 
   newCounter() {
@@ -32,14 +24,6 @@ class Fridge extends Component {
       .then(_ => {
         this._update();
       });
-  }
-
-  incrementCounter(index) {
-
-  }
-
-  decrementCounter(index) {
-
   }
 
   deleteItem(index) {
