@@ -51,6 +51,15 @@ class Fridge extends Component {
         <p>Food items:</p>
 
         <table>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Prcie per unit</th>
+                <th>Warning date</th>
+                <th>Expiration date</th>
+            </tr>
+        
           { this.state.foodItems.map((food, i) => (
             <tr key={i}>
               <td>{food.name} </td>
