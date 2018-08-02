@@ -12,7 +12,7 @@ class Fridge extends Component {
     this.newCounter = this.newCounter.bind(this);
     this.incrementCounter = this.incrementCounter.bind(this);
     this.decrementCounter = this.decrementCounter.bind(this);
-    this.deleteCounter = this.deleteCounter.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
 
     this._modifyCounter = this._modifyCounter.bind(this);
   }
@@ -39,12 +39,23 @@ class Fridge extends Component {
 
   }
 
-  deleteCounter(index) {
+  deleteItem(index) {
+    const id = this.state.counters[index]._id;
 
+    fetch(`/food/${id}`, { method: 'DELETE' })
+      .then(_ => {
+        this._modifyCounter(index, null);
+      });
   }
 
   _modifyCounter(index, data) {
-
+    fetch('/food')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          foodItems: json
+        });
+      });
   }
 
   render() {
@@ -58,7 +69,7 @@ class Fridge extends Component {
               <span>{food.name} </span>
               <button onClick={() => this.incrementCounter(i)}>+</button>
               <button onClick={() => this.decrementCounter(i)}>-</button>
-              <button onClick={() => this.deleteCounter(i)}>x</button>
+              <button onClick={() => this.deleteItem(i)}>x</button>
             </li>
           )) }
         </ul>
