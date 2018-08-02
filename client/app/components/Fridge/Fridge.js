@@ -66,15 +66,15 @@ class Fridge extends Component {
       <>
         <p>Food items:</p>
 
-        <ul>
+        <table>
           { this.state.foodItems.map((food, i) => (
-            <li key={i}>
-              <span>{food._id} </span>
-              <span>{food.name} </span>
-              <button onClick={() => this.deleteItem(i)}>x</button>
-            </li>
+            <tr key={i}>
+              <td>{food._id} </td>
+              <td>{food.name} </td>
+              <td><button onClick={() => this.deleteItem(i)}>x</button></td>
+            </tr>
           )) }
-        </ul>
+        </table>
 
         <button onClick={this.newCounter}>New counter</button>
       </>
