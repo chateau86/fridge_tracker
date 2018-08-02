@@ -69,6 +69,7 @@ class Fridge extends Component {
         <ul>
           { this.state.foodItems.map((food, i) => (
             <li key={i}>
+              <span>{food._id} </span>
               <span>{food.name} </span>
               <button onClick={() => this.deleteItem(i)}>x</button>
             </li>
