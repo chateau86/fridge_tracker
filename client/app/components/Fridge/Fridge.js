@@ -40,7 +40,7 @@ class Fridge extends Component {
   }
 
   deleteItem(index) {
-    const id = this.state.counters[index]._id;
+    const id = this.state.foodItems[index]._id;
 
     fetch(`/food/${id}`, { method: 'DELETE' })
       .then(_ => {
