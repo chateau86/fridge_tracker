@@ -71,6 +71,11 @@ class Fridge extends Component {
             <tr key={i}>
               <td>{food._id} </td>
               <td>{food.name} </td>
+              <td>{food.quantity} </td>
+              <td>{food.unit} </td>
+              <td>{food.price_per_unit} </td>
+              <td>{food.date_warn} </td>
+              <td>{food.date_expire} </td>
               <td><button onClick={() => this.deleteItem(i)}>x</button></td>
             </tr>
           )) }
