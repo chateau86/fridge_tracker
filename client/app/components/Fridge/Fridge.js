@@ -69,7 +69,6 @@ class Fridge extends Component {
         <table>
           { this.state.foodItems.map((food, i) => (
             <tr key={i}>
-              <td>{food._id} </td>
               <td>{food.name} </td>
               <td>{food.quantity} </td>
               <td>{food.unit} </td>
