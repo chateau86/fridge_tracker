@@ -59,7 +59,7 @@ class Fridge extends Component {
                 <th>Warning date</th>
                 <th>Expiration date</th>
             </tr>
-        
+            <tbody>
           { this.state.foodItems.map((food, i) => (
             <tr key={i}>
               <td>{food.name} </td>
@@ -71,6 +71,7 @@ class Fridge extends Component {
               <td><button onClick={() => this.deleteItem(i)}>x</button></td>
             </tr>
           )) }
+          </tbody>
         </table>
 
         <button onClick={this.newCounter}>New counter</button>
