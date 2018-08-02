@@ -14,7 +14,7 @@ class Fridge extends Component {
     this.decrementCounter = this.decrementCounter.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
 
-    this._modifyCounter = this._modifyCounter.bind(this);
+    this._update = this._update.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class Fridge extends Component {
   newCounter() {
     fetch(`/food/add`, { method: 'POST' })
       .then(_ => {
-        this._modifyCounter(index, null);
+        this._update();
       });
   }
 
@@ -47,11 +47,11 @@ class Fridge extends Component {
 
     fetch(`/food/${id}`, { method: 'DELETE' })
       .then(_ => {
-        this._modifyCounter(index, null);
+        this._update();
       });
   }
 
-  _modifyCounter(index, data) {
+  _update() {
     fetch('/food')
       .then(res => res.json())
       .then(json => {
