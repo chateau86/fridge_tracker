@@ -13,7 +13,7 @@ class Fridge extends Component {
     this.newCounter = this.newCounter.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.deleteItemByID = this.deleteItemByID.bind(this);
-
+    this.handleInputChange = this.handleInputChange.bind(this);
     this._update = this._update.bind(this);
   }
 
@@ -53,6 +53,16 @@ class Fridge extends Component {
         });
       });
   }
+  
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      input.[name]: value
+    });
+  }
 
   render() {
         const col = [
@@ -69,7 +79,11 @@ class Fridge extends Component {
       <>
         <p>Food items:</p>
 
+        
+        <p>
+        <input name="name" type="text" value={this.state.input.name} onChange={handleInputChange}/>
         <button onClick={this.newCounter}>New item</button>
+        </p>
         <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
         <ReactTable data={this.state.foodItems} columns={col} />
       </>
