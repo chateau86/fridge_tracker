@@ -69,31 +69,7 @@ class Fridge extends Component {
       <>
         <p>Food items:</p>
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Unit</th>
-                <th>Price per unit</th>
-                <th>Warning date</th>
-                <th>Expiration date</th>
-            </tr>
-            <tbody>
-          { this.state.foodItems.map((food, i) => (
-            <tr key={i}>
-              <td>{food.name} </td>
-              <td>{food.quantity} </td>
-              <td>{food.unit} </td>
-              <td>{food.price_per_unit} </td>
-              <td>{food.date_warn.substring(0, 10)}</td>
-              <td>{food.date_expire.substring(0, 10)} </td>
-              <td><button onClick={() => this.deleteItem(i)}>x</button></td>
-            </tr>
-          )) }
-          </tbody>
-        </table>
-
-        <button onClick={this.newCounter}>New counter</button>
+        <button onClick={this.newCounter}>New item</button>
         <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
         <ReactTable data={this.state.foodItems} columns={col} />
       </>
