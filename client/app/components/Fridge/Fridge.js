@@ -99,7 +99,7 @@ class Fridge extends Component {
                     data={this.state.foodItems} 
                     columns={col}
                     SubComponent={row => {
-                                console.log(row);
+                                //console.log(row);
                                 return (
                                   <div style={{ padding: "20px" }}>
                                     TODO: Edit box goes here {row.original._id}
