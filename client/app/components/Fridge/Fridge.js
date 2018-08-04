@@ -8,9 +8,7 @@ class Fridge extends Component {
 
     this.state = {
       foodItems: [],
-      input: {
-          name: ""
-      }
+      input_name:""
     };
 
     this.newCounter = this.newCounter.bind(this);
@@ -63,7 +61,7 @@ class Fridge extends Component {
     const name = target.name;
 
     this.setState({
-      ['input.'+name]: value
+      ['input_'+name]: value
     });
   }
 
