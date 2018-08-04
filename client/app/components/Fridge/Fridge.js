@@ -61,8 +61,8 @@ class Fridge extends Component {
           {Header:'Unit', accessor:'unit'},
           {Header:'Price per unit', accessor:'price_per_unit'},
           {id:'warn', Header:'Warning date', accessor:f=>f.date_warn.substring(0, 10)},
-          {id:'expire', Header:'Expire date', accessor:f=>f.date_expire.substring(0, 10)}
-          {Header:'Remove', accessor:'_id', Cell:props=><button onClick={() => this.deleteItemByID(props.value)}>x</button>}
+          {id:'expire', Header:'Expire date', accessor:f=>f.date_expire.substring(0, 10)},
+          {Header:'Remove', accessor:'_id', Cell:props=>{<button onClick={() =>this.deleteItemByID(props.value)}>x</button>}}
         ];
     return (
       <>
