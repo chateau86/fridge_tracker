@@ -48,8 +48,8 @@ class Fridge extends Component {
 
   render() {
     const col = [
-          {Header:'Name', accessor='name'},
-          {Header:'Qty', accessor='quantity'},
+          {Header:'Name', accessor:'name'},
+          {Header:'Qty', accessor:'quantity'},
       ];
     return (
       <>
