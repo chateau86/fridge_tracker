@@ -12,6 +12,7 @@ class Fridge extends Component {
 
     this.newCounter = this.newCounter.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.deleteItemByID = this.deleteItemByID.bind(this);
 
     this._update = this._update.bind(this);
   }
@@ -35,6 +36,13 @@ class Fridge extends Component {
         this._update();
       });
   }
+  
+  deleteItemByID(id) {
+    fetch(`/food/${id}`, { method: 'DELETE' })
+      .then(_ => {
+        this._update();
+      });
+  }
 
   _update() {
     fetch('/food')
@@ -49,11 +57,12 @@ class Fridge extends Component {
   render() {
         const col = [
           {Header:'Name', accessor:'name'},
-          {Header:'Name', accessor:'name'},
+          {Header:'Quantity', accessor:'quantity'},
           {Header:'Unit', accessor:'unit'},
           {Header:'Price per unit', accessor:'price_per_unit'},
           {id:'warn', Header:'Warning date', accessor:f=>f.date_warn.substring(0, 10)},
           {id:'expire', Header:'Expire date', accessor:f=>f.date_expire.substring(0, 10)}
+          {Header:'Remove', accessor:'_id', Cell:props=><button onClick={() => this.deleteItemByID(props.value)}>x</button>}
         ];
     return (
       <>
