@@ -77,6 +77,7 @@ class Fridge extends Component {
             {id:'expire', Header:'Expire date', accessor:f=>f.date_expire.substring(0, 10)},
             {Header:'Remove', accessor:'_id', Cell:props => <button onClick={() =>this.deleteItemByID(props.value)}>x</button>}
         ];
+        const btn_enabled = this.state.input_name.length>0 && this.state.input_qty>0
         return (
             <>
                 <p>Food items:</p>
@@ -85,7 +86,7 @@ class Fridge extends Component {
                 <p>
                 Name:<input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
                 Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
-                <button onClick={this.newItem}>New item</button>
+                <button disabled={!btn_enabled} onClick={this.newItem}>New item</button>
                 </p>
                 <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
                 <ReactTable data={this.state.foodItems} columns={col} />
