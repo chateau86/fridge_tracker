@@ -63,7 +63,7 @@ class Fridge extends Component {
     const name = target.name;
 
     this.setState({
-      input.[name]: value
+      ['input.'+name]: value
     });
   }
 
