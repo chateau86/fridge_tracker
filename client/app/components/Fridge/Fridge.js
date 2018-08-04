@@ -25,8 +25,8 @@ class Fridge extends Component {
     }
 
     newItem() {
-        fetch(`/food/add?'+
-                'name=`+this.state.input_name+
+        fetch('/food/add?'+
+                'name='+this.state.input_name+
                 '&qty='+this.state.input_qty+
                 '&unit='+this.state.input_unit
                 , { method: 'POST' })
@@ -95,7 +95,18 @@ class Fridge extends Component {
                 <button disabled={!btn_enabled} onClick={this.newItem}>New item</button>
                 </p>
                 <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
-                <ReactTable data={this.state.foodItems} columns={col} />
+                <ReactTable
+                    data={this.state.foodItems} 
+                    columns={col}
+                    SubComponent={row => {
+                                return (
+                                  <div style={{ padding: "20px" }}>
+                                    TODO: Edit box goes here<br />
+                                    {row}
+                                  </div>
+                                );
+                              }}                
+                />
             </>
 
         );
