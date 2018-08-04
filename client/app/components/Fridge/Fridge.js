@@ -47,6 +47,10 @@ class Fridge extends Component {
   }
 
   render() {
+    const col = [
+          {Header:'Name', accessor='name'},
+          {Header:'Qty', accessor='quantity'},
+      ];
     return (
       <>
         <p>Food items:</p>
@@ -79,10 +83,7 @@ class Fridge extends Component {
       </>
       
       
-      <ReactTable data={foodItems} columns = [
-          {Header:'Name', accessor='name'},
-          {Header:'Qty', accessor='quantity'},
-      ]/>
+      <ReactTable data={foodItems} columns={col} />
     );
   }
 }
