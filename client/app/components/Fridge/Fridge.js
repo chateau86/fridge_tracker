@@ -8,7 +8,8 @@ class Fridge extends Component {
 
     this.state = {
       foodItems: [],
-      input_name:""
+      input_name:"",
+      input_qty:0
     };
 
     this.newCounter = this.newCounter.bind(this);
@@ -82,7 +83,8 @@ class Fridge extends Component {
 
         
         <p>
-        <input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
+        Name:<input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
+        Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
         <button onClick={this.newCounter}>New item</button>
         </p>
         <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
