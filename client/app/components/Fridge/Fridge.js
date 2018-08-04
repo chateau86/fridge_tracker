@@ -9,6 +9,7 @@ class Fridge extends Component {
         this.state = {
             foodItems: [],
             input_name:"",
+            input_unit:"count",
             input_qty:0
         };
 
@@ -24,7 +25,11 @@ class Fridge extends Component {
     }
 
     newItem() {
-        fetch(`/food/add?name=`+this.state.input_name+'&qty='+this.state.input_qty, { method: 'POST' })
+        fetch(`/food/add?'+
+                'name=`+this.state.input_name+
+                '&qty='+this.state.input_qty+
+                '&unit='+this.state.input_unit
+                , { method: 'POST' })
             .then(_ => {
                 this._update();
             });
@@ -86,6 +91,7 @@ class Fridge extends Component {
                 <p>
                 Name:<input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
                 Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
+                Unit:<input name="unit" type="text" value={this.state.input_unit} onChange={this.handleInputChange}/>
                 <button disabled={!btn_enabled} onClick={this.newItem}>New item</button>
                 </p>
                 <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
