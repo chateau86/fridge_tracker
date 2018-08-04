@@ -77,6 +77,12 @@ class Fridge extends Component {
 
         <button onClick={this.newCounter}>New counter</button>
       </>
+      
+      
+      <ReactTable data={foodItems} columns = [
+          {Header:'Name', accessor='name'},
+          {Header:'Qty', accessor='quantity'},
+      ]/>
     );
   }
 }
