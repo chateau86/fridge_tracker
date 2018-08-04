@@ -102,7 +102,7 @@ class Fridge extends Component {
                                 return (
                                   <div style={{ padding: "20px" }}>
                                     TODO: Edit box goes here<br />
-                                    {row}
+                                    {row.name}
                                   </div>
                                 );
                               }}                
