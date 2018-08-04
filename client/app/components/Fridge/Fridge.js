@@ -83,7 +83,7 @@ class Fridge extends Component {
       </>
       
       
-      <ReactTable data={foodItems} columns={col} />
+      <ReactTable data={this.foodItems} columns={col} />
     );
   }
 }
