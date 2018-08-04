@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 import ReactTable from "react-table";
-import 'react-table/react-table.css'
 
 class Fridge extends Component {
   constructor(props) {
