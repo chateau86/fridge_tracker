@@ -100,13 +100,13 @@ class Fridge extends Component {
                     columns={col}
                     SubComponent={row => {
                                 //console.log(row);
-                                return (
-                                  <div style={{ padding: "20px" }}>
-                                    TODO: Edit box goes here {row.original._id}
-                                    
-                                  </div>
-                                );
-                              }}                
+                                  return (
+                                      <div style={{ padding: "20px" }}>
+                                      TODO: Edit box goes here {row.original._id}
+
+                                      </div>
+                                  );
+                                 }}                
                 />
             </>
 
