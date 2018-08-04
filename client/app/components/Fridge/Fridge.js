@@ -12,7 +12,7 @@ class Fridge extends Component {
       input_qty:0
     };
 
-    this.newCounter = this.newCounter.bind(this);
+    this.newItem = this.newItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.deleteItemByID = this.deleteItemByID.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,8 +23,8 @@ class Fridge extends Component {
     this._update();
   }
 
-  newCounter() {
-    fetch(`/food/add`, { method: 'POST' })
+  newItem() {
+    fetch(`/food/add?name=`+this.state.input_name+'&qty='+this.state.input_qty, { method: 'POST' })
       .then(_ => {
         this._update();
       });
@@ -85,7 +85,7 @@ class Fridge extends Component {
         <p>
         Name:<input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
         Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
-        <button onClick={this.newCounter}>New item</button>
+        <button onClick={this.newItem}>New item</button>
         </p>
         <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
         <ReactTable data={this.state.foodItems} columns={col} />
