@@ -80,7 +80,7 @@ class Fridge extends Component {
         </table>
 
         <button onClick={this.newCounter}>New counter</button>
-        <link rel="stylesheet" href="node_modules/react-table/react-table.css">
+        <link rel="stylesheet" href="node_modules/react-table/react-table.css" />
         <ReactTable data={this.state.foodItems} columns={col} />
       </>
 
