@@ -47,10 +47,15 @@ class Fridge extends Component {
   }
 
   render() {
-    const col = [
+        const col = [
           {Header:'Name', accessor:'name'},
-          {Header:'Qty', accessor:'quantity'},
-      ];
+          {Header:'Name', accessor:'name'},
+          {Header:'Unit', accessor:'unit'},
+          {Header:'Price per unit', accessor:'price_per_unit'},
+          {id:'warn', Header:'Warning date', accessor:f=>f.date_warn.substring(0, 10)},
+          {id:'expire', Header:'Expire date', f=>f.date_expire.substring(0, 10)},
+          
+        ];
     return (
       <>
         <p>Food items:</p>
@@ -60,7 +65,7 @@ class Fridge extends Component {
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Unit</th>
-                <th>Prcie per unit</th>
+                <th>Price per unit</th>
                 <th>Warning date</th>
                 <th>Expiration date</th>
             </tr>
