@@ -82,7 +82,7 @@ class Fridge extends Component {
 
         
         <p>
-        <input name="name" type="text" value={this.state.input.name} onChange={this.handleInputChange}/>
+        <input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
         <button onClick={this.newCounter}>New item</button>
         </p>
         <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
