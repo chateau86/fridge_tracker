@@ -10,7 +10,7 @@ class Fridge extends Component {
             foodItems: [],
             input_name:"",
             input_unit:"count",
-            input_qty:0,
+            input_qty:1,
             input_ppu:1,
             input_warn:"2018-08-05",
             input_exp:"2018-08-06",
@@ -80,15 +80,18 @@ class Fridge extends Component {
     render() {
         const col = [
             {Header:'Name', accessor:'name'},
-            {Header:'Quantity', accessor:'quantity'},
             {Header:'Unit', accessor:'unit'},
+            {Header:'Quantity', accessor:'quantity'},
             {Header:'Price per unit', accessor:'price_per_unit'},
             {id:'total_value', Header: 'Total value', accessor:f=>(f.quantity*f.price_per_unit)},
             {id:'warn', Header:'Warning date', accessor:f=>f.date_warn.substring(0, 10)},
             {id:'expire', Header:'Expire date', accessor:f=>f.date_expire.substring(0, 10)},
             {Header:'Remove', accessor:'_id', Cell:props => <button onClick={() =>this.deleteItemByID(props.value)}>x</button>}
         ];
-        const btn_enabled = this.state.input_name.length>0 && this.state.input_qty>0
+        const btn_enabled = this.state.input_name.length>0 &&
+                            this.state.input_unit.length>0 &&
+                            this.state.input_qty>0 &&
+                            this.state.input_ppu>0;
         return (
             <>
                 <p>Food items:</p>
@@ -96,8 +99,8 @@ class Fridge extends Component {
                 
                 <p>
                 Name:<input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
-                Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
                 Unit:<input name="unit" type="text" value={this.state.input_unit} onChange={this.handleInputChange}/>
+                Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
                 Price per unit:<input name="ppu" type="text" value={this.state.input_ppu} onChange={this.handleInputChange}/>
                 Warning date (YYYY-MM-DD):<input name="warn" type="text" value={this.state.input_warn} onChange={this.handleInputChange}/>
                 Expire date (YYYY-MM-DD):<input name="exp" type="text" value={this.state.input_exp} onChange={this.handleInputChange}/>
