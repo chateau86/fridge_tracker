@@ -10,7 +10,10 @@ class Fridge extends Component {
             foodItems: [],
             input_name:"",
             input_unit:"count",
-            input_qty:0
+            input_qty:0,
+            input_ppu:1,
+            input_warn:"2018-08-05",
+            input_exp:"2018-08-06",
         };
 
         this.newItem = this.newItem.bind(this);
@@ -28,7 +31,10 @@ class Fridge extends Component {
         fetch('/food/add?'+
                 'name='+this.state.input_name+
                 '&qty='+this.state.input_qty+
-                '&unit='+this.state.input_unit
+                '&unit='+this.state.input_unit+
+                '&ppu='+this.state.input_ppu+
+                '&warn='+this.state.input_warn+
+                '&exp='+this.state.input_exp
                 , { method: 'POST' })
             .then(_ => {
                 this._update();
@@ -92,6 +98,9 @@ class Fridge extends Component {
                 Name:<input name="name" type="text" value={this.state.input_name} onChange={this.handleInputChange}/>
                 Quantity:<input name="qty" type="number" value={this.state.input_qty} onChange={this.handleInputChange}/>
                 Unit:<input name="unit" type="text" value={this.state.input_unit} onChange={this.handleInputChange}/>
+                Price per unit:<input name="ppu" type="text" value={this.state.input_ppu} onChange={this.handleInputChange}/>
+                Warning date (YYYY-MM-DD):<input name="warn" type="text" value={this.state.input_warn} onChange={this.handleInputChange}/>
+                Expire date (YYYY-MM-DD):<input name="exp" type="text" value={this.state.input_exp} onChange={this.handleInputChange}/>
                 <button disabled={!btn_enabled} onClick={this.newItem}>New item</button>
                 </p>
                 <link rel="stylesheet" href="https://unpkg.com/react-table@latest/react-table.css" />
