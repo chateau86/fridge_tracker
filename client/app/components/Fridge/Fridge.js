@@ -10,7 +10,7 @@ class Fridge extends Component {
             foodItems: [],
             input_name:"",
             input_unit:"count",
-            input_qty:0,
+            input_qty:1,
             input_ppu:1,
             input_warn:"2018-08-05",
             input_exp:"2018-08-06",
@@ -88,7 +88,10 @@ class Fridge extends Component {
             {id:'expire', Header:'Expire date', accessor:f=>f.date_expire.substring(0, 10)},
             {Header:'Remove', accessor:'_id', Cell:props => <button onClick={() =>this.deleteItemByID(props.value)}>x</button>}
         ];
-        const btn_enabled = this.state.input_name.length>0 && this.state.input_qty>0
+        const btn_enabled = this.state.input_name.length>0 &&
+                            this.state.input_unit.length>0 &&
+                            this.state.input_qty>0 &&
+                            this.state.input_ppu>0;
         return (
             <>
                 <p>Food items:</p>
