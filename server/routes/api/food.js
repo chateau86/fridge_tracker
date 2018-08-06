@@ -5,7 +5,10 @@ var schedule = require('node-schedule');
  
 var j = schedule.scheduleJob('42 * * * * *', function(){
   console.log('node-schedule test');
-  console.log(FoodItem.find().exec());
+    FoodItem.find()
+        .exec()
+        .then((food) => console.log(food))
+        .catch((err) => console.log(err));
 });
 
 module.exports = (app) => {
