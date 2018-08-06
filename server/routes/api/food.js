@@ -1,5 +1,5 @@
 const FoodItem = require('../../models/FoodItem');
-
+console.log("food.js ran");
 module.exports = (app) => {
     app.get('/food', (req, res, next) => {
         console.log("get list");
