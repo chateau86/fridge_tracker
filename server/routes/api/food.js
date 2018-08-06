@@ -1,5 +1,12 @@
 const FoodItem = require('../../models/FoodItem');
 console.log("food.js ran");
+
+var schedule = require('node-schedule');
+ 
+var j = schedule.scheduleJob('42 * * * * *', function(){
+  console.log('node-schedule test');
+});
+
 module.exports = (app) => {
     app.get('/food', (req, res, next) => {
         console.log("get list");
