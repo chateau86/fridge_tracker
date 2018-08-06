@@ -4,11 +4,12 @@ console.log("food.js ran");
 var schedule = require('node-schedule');
  
 var j = schedule.scheduleJob('42 * * * * *', function(){
-  console.log('node-schedule test');
+    console.log('node-schedule test---');
     FoodItem.find()
         .exec()
         .then((food) => console.log(food))
         .catch((err) => console.log(err));
+    console.log('--------');
 });
 
 module.exports = (app) => {
