@@ -9,7 +9,14 @@ var j = schedule.scheduleJob('42 * * * * *', function(){
         { $group: {
         _id: null,
         total:       { $sum: { $multiply: ["$price_per_unit", "$quantity"] } }
-        }}
+        }},
+        function (err, result) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log(result);
+        }
     )
     console.log('--------');
 });
