@@ -6,10 +6,9 @@ var schedule = require('node-schedule');
 var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log('node-schedule test---');
     FoodItem.aggregate(
-        { $group: {
-        _id: null,
-        total:       { $sum: { $multiply: ["$price_per_unit", "$quantity"] } }
-        }},
+        {
+        total: { $sum: { $multiply: ["$price_per_unit", "$quantity"] } }
+        },
         function (err, result) {
             if (err) {
                 console.log(err);
