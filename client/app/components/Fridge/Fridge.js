@@ -5,15 +5,17 @@ import ReactTable from "react-table";
 class Fridge extends Component {
     constructor(props) {
         super(props);
-
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         this.state = {
             foodItems: [],
             input_name:"",
             input_unit:"count",
             input_qty:1,
             input_ppu:1,
-            input_warn:"2018-08-05",
-            input_exp:"2018-08-06",
+            input_warn:today.toISOString().slice(0,10),
+            input_exp:tomorrow.toISOString().slice(0,10),
         };
 
         this.newItem = this.newItem.bind(this);
