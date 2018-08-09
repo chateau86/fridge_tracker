@@ -7,7 +7,7 @@ var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log('node-schedule test---');
     FoodItem.aggregate([
         {$total: {$sum: "$quantity"}}
-        }]
+        ]
     )
     console.log('--------');
 });
