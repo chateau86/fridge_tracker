@@ -6,6 +6,8 @@ console.log(SECRET);
 var schedule = require('node-schedule');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
  
+console.log("food.js prereq load ok");
+ 
 var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('node-schedule test---');
     var currentDate = new Date();
@@ -25,7 +27,7 @@ var j = schedule.scheduleJob('*/10 * * * * *', function(){
         .catch((err) => next(err))
     console.log('--------');
 });
-
+console.log("food.js scheduler planted");
 /*function toParams(data_js) {
     var form_data = [];
     for ( var key in data_js ) {
