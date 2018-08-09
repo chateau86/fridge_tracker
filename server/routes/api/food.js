@@ -14,10 +14,10 @@ var j = schedule.scheduleJob('*/10 * * * * *', function(){
             //console.log("-"+foodArr);
             var totalValue = 0;
             foodArr.forEach((itm)=>{
-                console.log("*"+itm);
+                //console.log("*"+itm);
                 totalValue+=(itm.quantity*itm.price_per_unit);
                 })
-            console.log("total warn: "+totalValue);
+            console.log("timer total warn: "+totalValue);
         })
         .catch((err) => next(err))
     console.log('--------');
@@ -101,11 +101,11 @@ module.exports = (app) => {
             var totalValue = 0;
             var itemCount = 0;
             foodArr.forEach((itm)=>{
-                console.log("*"+itm);
+                //console.log("*"+itm);
                 totalValue+=(itm.quantity*itm.price_per_unit);
                 itemCount += 1;
                 })
-            console.log("items: "+itemCount);
+            console.log("email items: "+itemCount);
             console.log("total warn: "+totalValue);
             //TODO: send email from here
             res.json();
