@@ -26,14 +26,14 @@ var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('--------');
 });
 
-function toParams(data_js) {
+/*function toParams(data_js) {
     var form_data = [];
     for ( var key in data_js ) {
         form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
     }
 
     return form_data.join("&");
-}
+}*/
 
 module.exports = (app) => {
     app.get('/food', (req, res, next) => {
