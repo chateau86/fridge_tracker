@@ -28,14 +28,14 @@ var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('--------');
 });
 console.log("food.js scheduler planted");
-/*function toParams(data_js) {
+function toParams(data_js) {
     var form_data = [];
     for ( var key in data_js ) {
         form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
     }
 
     return form_data.join("&");
-}*/
+}
 
 module.exports = (app) => {
     app.get('/food', (req, res, next) => {
@@ -135,12 +135,12 @@ module.exports = (app) => {
             var data_js = {access_token: SECRET.EMAIL_API_KEY};
             data_js['subject'] = "Fridge: "+itemCount+" items worth "+totalValue+" are about to expire"
             data_js['text'] = itemCount+" items worth "+totalValue+" are about to expire. Check the web interface for details."
-            /*var params = toParams(data_js);
+            var params = toParams(data_js);
             console.log("email request param: "+params);
             request.open("POST", "https://postmail.invotes.com/send", true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            request.send(params);*/
+            request.send(params);
             
             res.json();
         })
