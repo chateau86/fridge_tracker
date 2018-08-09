@@ -6,14 +6,10 @@ var schedule = require('node-schedule');
 var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log('node-schedule test---');
     console.log(
-        FoodItem.aggregate([
-            $group:{
-                _id:null,
-                total: {$sum: "$quantity"}
-            }
-            ]).exec()
-            .then((res)=>console.log(res))
-            .catch((err) => console.log(err))
+        FoodItem.find()
+            .exec()
+            .then((food) => console.log("-"+food))
+            .catch((err) => next(err));
     )
     console.log('--------');
 });
