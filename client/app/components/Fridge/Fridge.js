@@ -92,7 +92,7 @@ class Fridge extends Component {
                             this.state.input_unit.length>0 &&
                             this.state.input_qty>0 &&
                             this.state.input_ppu>0 &&
-                            Date(this.state.input_warn) <= Date(this.state.input_exp)
+                            (new Date(this.state.input_warn) <= new Date(this.state.input_exp))
         return (
             <>
                 <p>Food items:</p>
