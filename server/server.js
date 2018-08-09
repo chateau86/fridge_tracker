@@ -27,7 +27,7 @@ app.use(express.json());
 
 // API routes
 require('./routes')(app);
-
+console.log("server.js routes load ok");
 if (isDev) {
   const compiler = webpack(webpackConfig);
 
@@ -57,7 +57,7 @@ if (isDev) {
     res.end();
   });
 }
-
+console.log("server.js now start listen");
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);
