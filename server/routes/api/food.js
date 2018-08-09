@@ -141,7 +141,7 @@ module.exports = (app) => {
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             request.send(params);
-            
+            console.log("email request sent");
             res.json();
         })
         .catch((err) => next(err))
