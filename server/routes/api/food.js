@@ -6,9 +6,10 @@ var schedule = require('node-schedule');
 var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('node-schedule test---');
     var currentDate = new Date();
-    FoodItem.find(
-        {date_warn:{$lt: currentDate}}
-        ).exec()
+    FoodItem.find({
+            date_warn:{$lt: currentDate},
+            date_expire:{$gt: currentDate}
+        }).exec()
         .then((foodArr) =>{ 
             //console.log("-"+foodArr);
             var totalValue = 0;
@@ -16,7 +17,7 @@ var j = schedule.scheduleJob('*/10 * * * * *', function(){
                 console.log("*"+itm);
                 totalValue+=(itm.quantity*itm.price_per_unit);
                 })
-            console.log("total: "+totalValue);
+            console.log("total warn: "+totalValue);
         })
         .catch((err) => next(err))
     console.log('--------');
