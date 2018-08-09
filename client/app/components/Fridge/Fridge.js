@@ -91,7 +91,8 @@ class Fridge extends Component {
         const btn_enabled = this.state.input_name.length>0 &&
                             this.state.input_unit.length>0 &&
                             this.state.input_qty>0 &&
-                            this.state.input_ppu>0;
+                            this.state.input_ppu>0 &&
+                            Date(this.state.input_warn) <= Date(this.state.input_exp)
         return (
             <>
                 <p>Food items:</p>
