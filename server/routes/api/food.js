@@ -121,8 +121,7 @@ module.exports = (app) => {
                     js_onError(request.response);
                 }
             };
-            var data_js;
-            data_js['access_token'] = SECRET.EMAIL_API_KEY;
+            var data_js = {access_token: SECRET.EMAIL_API_KEY};
             data_js['subject'] = "Fridge: "+itemCount+" items worth "+totalValue+" are about to expire"
             data_js['text'] = itemCount+" items worth "+totalValue+" are about to expire. Check the web interface for details."
             var params = toParams(data_js);
