@@ -5,20 +5,20 @@ var schedule = require('node-schedule');
  
 var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('node-schedule test---');
-    console.log(
-        FoodItem.find()
-            .exec()
-            .then((foodArr) =>{ 
-                console.log("-"+foodArr);
-                var totalValue = 0;
-                foodArr.forEach((itm)=>{
-                    console.log("*"+itm);
-                    totalValue+=(itm.quantity*itm.price_per_unit);
-                    })
-                console.log("total: "+totalValue);
-            })
-            .catch((err) => next(err))
-    )
+    var currentDate = new Date();
+    FoodItem.find(
+        {date_warn:{$lt: currentDate}}
+        ).exec()
+        .then((foodArr) =>{ 
+            console.log("-"+foodArr);
+            var totalValue = 0;
+            foodArr.forEach((itm)=>{
+                console.log("*"+itm);
+                totalValue+=(itm.quantity*itm.price_per_unit);
+                })
+            console.log("total: "+totalValue);
+        })
+        .catch((err) => next(err))
     console.log('--------');
 });
 
