@@ -3,7 +3,7 @@ console.log("food.js ran");
 
 var schedule = require('node-schedule');
  
-var j = schedule.scheduleJob('42 * * * * *', function(){
+var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('node-schedule test---');
     console.log(
         FoodItem.find()
@@ -15,7 +15,7 @@ var j = schedule.scheduleJob('42 * * * * *', function(){
                     console.log("*"+itm);
                     totalValue+=(itm.quantity*itm.price_per_unit);
                     })
-                return totalValue;
+                console.log("total: "+totalValue);
             })
             .catch((err) => next(err))
     )
