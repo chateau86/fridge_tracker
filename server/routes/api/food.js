@@ -140,7 +140,7 @@ module.exports = (app) => {
 
             request.send(params);
             
-            res.json(request.status);
+            res.json();
         })
         .catch((err) => next(err))
     });
