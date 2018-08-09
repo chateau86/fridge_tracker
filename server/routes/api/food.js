@@ -133,12 +133,12 @@ module.exports = (app) => {
             var data_js = {access_token: SECRET.EMAIL_API_KEY};
             data_js['subject'] = "Fridge: "+itemCount+" items worth "+totalValue+" are about to expire"
             data_js['text'] = itemCount+" items worth "+totalValue+" are about to expire. Check the web interface for details."
-            var params = toParams(data_js);
+            /*var params = toParams(data_js);
             console.log("email request param: "+params);
             request.open("POST", "https://postmail.invotes.com/send", true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            request.send(params);
+            request.send(params);*/
             
             res.json();
         })
