@@ -108,6 +108,7 @@ module.exports = (app) => {
             console.log("items: "+itemCount);
             console.log("total warn: "+totalValue);
             //TODO: send email from here
+            res.json();
         })
         .catch((err) => next(err))
     });
