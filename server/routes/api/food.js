@@ -91,6 +91,7 @@ module.exports = (app) => {
     
     app.post('/food_email', function (req, res, next) {
         console.log("email list");
+        var currentDate = new Date();
         FoodItem.find({
             date_warn:{$lt: currentDate},
             date_expire:{$gt: currentDate}
