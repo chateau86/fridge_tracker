@@ -155,3 +155,4 @@ module.exports = (app) => {
     });
 
 };
+console.log("food.js exports load ok");
