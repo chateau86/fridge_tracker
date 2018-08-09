@@ -8,7 +8,12 @@ var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log(
         FoodItem.find()
             .exec()
-            .then((food) => console.log("-"+food))
+            .then((foodArr) =>{ 
+                console.log("-"+foodArr)
+                var totalValue = 0;
+                foodArr.foreach((itm)=>{totalValue+=(itm.quantity*itm.price_per_unit)})
+                return totalValue;
+            })
             .catch((err) => next(err))
     )
     console.log('--------');
