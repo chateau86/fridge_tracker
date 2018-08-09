@@ -7,7 +7,10 @@ var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log('node-schedule test---');
     console.log(
         FoodItem.aggregate([
-            {total: {$sum: "$quantity"}}
+            $group:{
+                _id:null,
+                total: {$sum: "$quantity"}
+            }
             ]).exec()
             .then((res)=>console.log(res))
             .catch((err) => console.log(err))
