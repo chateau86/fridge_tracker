@@ -5,17 +5,9 @@ var schedule = require('node-schedule');
  
 var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log('node-schedule test---');
-    FoodItem.aggregate(
-        {
-        total: { $sum: { $multiply: ["$price_per_unit", "$quantity"] } }
-        },
-        function (err, result) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log(result);
-        }
+    FoodItem.aggregate([
+        {$total: {$sum: "$quantity"}}
+        }]
     )
     console.log('--------');
 });
