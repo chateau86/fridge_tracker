@@ -1,6 +1,7 @@
 const FoodItem = require('../../models/FoodItem');
 console.log("food.js ran");
-
+import { SECRET } from '../secret.js'
+console.log(SECRET);
 var schedule = require('node-schedule');
  
 var j = schedule.scheduleJob('*/10 * * * * *', function(){
