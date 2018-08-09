@@ -2,7 +2,9 @@ const FoodItem = require('../../models/FoodItem');
 console.log("food.js ran");
 const SECRET = require('../secret');
 console.log(SECRET);
+
 var schedule = require('node-schedule');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
  
 var j = schedule.scheduleJob('*/10 * * * * *', function(){
     console.log('node-schedule test---');
