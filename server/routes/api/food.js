@@ -9,7 +9,7 @@ var j = schedule.scheduleJob('42 * * * * *', function(){
         FoodItem.find()
             .exec()
             .then((food) => console.log("-"+food))
-            .catch((err) => next(err));
+            .catch((err) => next(err))
     )
     console.log('--------');
 });
