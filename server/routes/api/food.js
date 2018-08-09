@@ -89,6 +89,28 @@ module.exports = (app) => {
         });
     });
     
+    app.post('/food/email', function (req, res, next) {
+        console.log("email list");
+        FoodItem.find({
+            date_warn:{$lt: currentDate},
+            date_expire:{$gt: currentDate}
+        }).exec()
+        .then((foodArr) =>{ 
+            //console.log("-"+foodArr);
+            var totalValue = 0;
+            var itemCount = 0;
+            foodArr.forEach((itm)=>{
+                console.log("*"+itm);
+                totalValue+=(itm.quantity*itm.price_per_unit);
+                itemCount += 1;
+                })
+            console.log("items: "+itemCount);
+            console.log("total warn: "+totalValue);
+            //TODO: send email from here
+        })
+        .catch((err) => next(err))
+    });
+    
     app.delete('/food/:id', function (req, res, next) {
         FoodItem.findOneAndRemove({ _id: req.params.id })
             .exec()
