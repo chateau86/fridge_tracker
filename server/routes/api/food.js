@@ -89,7 +89,7 @@ module.exports = (app) => {
         });
     });
     
-    app.post('/food/email', function (req, res, next) {
+    app.post('/food_email', function (req, res, next) {
         console.log("email list");
         FoodItem.find({
             date_warn:{$lt: currentDate},
