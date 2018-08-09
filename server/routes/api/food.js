@@ -10,7 +10,7 @@ var j = schedule.scheduleJob('*/10 * * * * *', function(){
         {date_warn:{$lt: currentDate}}
         ).exec()
         .then((foodArr) =>{ 
-            console.log("-"+foodArr);
+            //console.log("-"+foodArr);
             var totalValue = 0;
             foodArr.forEach((itm)=>{
                 console.log("*"+itm);
