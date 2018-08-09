@@ -5,9 +5,13 @@ var schedule = require('node-schedule');
  
 var j = schedule.scheduleJob('42 * * * * *', function(){
     console.log('node-schedule test---');
-    console.log(FoodItem.aggregate([
-        {$total: {$sum: "$quantity"}}
-        ]).exec().then((res)=>console.log(res)))
+    console.log(
+        FoodItem.aggregate([
+            {$total: {$sum: "$quantity"}}
+            ]).exec()
+            .then((res)=>console.log(res))
+            .catch((err) => console.log(err))
+    )
     console.log('--------');
 });
 
