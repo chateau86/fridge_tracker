@@ -123,11 +123,11 @@ module.exports = (app) => {
             console.log("total warn: "+totalValue);
 
             //send email
-            request.post('https://postmail.invotes.com/send', form({
+            request.post({url:'https://postmail.invotes.com/send', form:{
                 access_token:SECRET.EMAIL_API_KEY,
                 subject: "Fridge: "+itemCount+" ingredients worth "+totalValue+" are about to expire.",
                 text: itemCount+" ingredients worth "+totalValue+" are about to expire. Check web interface for details."
-                }),function(err,httpResponse,body){ 
+                }},function(err,httpResponse,body){ 
                     res.json(httpResponse);
                 }
             )
