@@ -4,7 +4,7 @@ const SECRET = require('../secret');
 console.log(SECRET);
 
 var schedule = require('node-schedule');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var request = require('request');
  
 console.log("food.js prereq load ok");
  
@@ -123,26 +123,7 @@ module.exports = (app) => {
             console.log("total warn: "+totalValue);
 
             //send email
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function() {
-                if (request.readyState == 4 && request.status == 200) {
-                    js_onSuccess();
-                } else
-                if(request.readyState == 4) {
-                    js_onError(request.response);
-                }
-            };
-            var data_js = {access_token: SECRET.EMAIL_API_KEY};
-            data_js['subject'] = "Fridge: "+itemCount+" items worth "+totalValue+" are about to expire"
-            data_js['text'] = itemCount+" items worth "+totalValue+" are about to expire. Check the web interface for details."
-            var params = toParams(data_js);
-            console.log("email request param: "+params);
-            request.open("POST", "https://postmail.invotes.com/send", true);
-            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            request.send(params);
-            console.log("email request sent");
-            res.json();
+            
         })
         .catch((err) => next(err))
     });
