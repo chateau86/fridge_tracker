@@ -124,9 +124,9 @@ module.exports = (app) => {
 
             //send email
             request.post({url:'https://postmail.invotes.com/send', form:{
-                access_token:SECRET.EMAIL_API_KEY,
-                subject: "Fridge: "+itemCount+" ingredients worth "+totalValue+" are about to expire.",
-                text: itemCount+" ingredients worth "+totalValue+" are about to expire. Check web interface for details."
+                    access_token:SECRET.EMAIL_API_KEY,
+                    subject: "Fridge: "+itemCount+" ingredients worth "+totalValue+" are about to expire.",
+                    text: itemCount+" ingredients worth "+totalValue+" are about to expire. Check web interface for details."
                 }},function(err,httpResponse,body){ 
                     res.json(httpResponse);
                 }
