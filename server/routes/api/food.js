@@ -163,7 +163,7 @@ module.exports = (app) => {
                 to: SECRET.TWILLO_TO,  // Text this number
                 from: SECRET.TWILLO_FROM // From a valid Twilio number
             })
-            .then((message) => console.log(message.sid));
+            .then((message) => res.json(message.sid));
             
             
         })
