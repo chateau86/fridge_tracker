@@ -5,6 +5,7 @@ console.log(SECRET);
 
 var schedule = require('node-schedule');
 var request = require('request');
+var twilio = require('twilio');
  
 console.log("food.js prereq load ok");
  
@@ -131,6 +132,39 @@ module.exports = (app) => {
                     res.json(httpResponse);
                 }
             )
+            
+        })
+        .catch((err) => next(err))
+    });
+    
+    app.post('/food_text', function (req, res, next) {
+        console.log("text list");
+        var currentDate = new Date();
+        FoodItem.find({
+            date_warn:{$lt: currentDate},
+            date_expire:{$gt: currentDate}
+        }).exec()
+        .then((foodArr) =>{ 
+            //console.log("-"+foodArr);
+            var totalValue = 0;
+            var itemCount = 0;
+            foodArr.forEach((itm)=>{
+                //console.log("*"+itm);
+                totalValue+=(itm.quantity*itm.price_per_unit);
+                itemCount += 1;
+                })
+            console.log("text items: "+itemCount);
+            console.log("total warn: "+totalValue);
+
+            //send sms
+            var client = new twilio(SECRET.TWILLO_USR, SECRET.TWILLO_PWD);
+            client.messages.create({
+                body: "Fridge: "+itemCount+" ingredients worth "+totalValue+" are about to expire.",
+                to: SECRET.TWILLO_TO,  // Text this number
+                from: SECRET.TWILLO_FROM // From a valid Twilio number
+            })
+            .then((message) => console.log(message.sid));
+            
             
         })
         .catch((err) => next(err))
